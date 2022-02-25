@@ -7,6 +7,9 @@ namespace StudentManagement.Services
     public class ManagementContext: DbContext
     {
         public DbSet<Student> students { get; set; }
+        public DbSet<Professor> professors { get; set; }
+
+        public DbSet<Course> courses { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -14,4 +17,6 @@ namespace StudentManagement.Services
             optionsBuilder.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString));
         }
     }
+
+   
 }

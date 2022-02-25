@@ -23,18 +23,6 @@ namespace StudentManagement.Controllers
             return management.students.ToList();
         }
 
-        [HttpGet("professors")]
-        public List<Professor> GetProfesors()
-        {
-            return data.Professors;
-        }
-
-        [HttpGet("courses")]
-        public List<Course> GetCourses()
-        {
-            return data.Courses;
-        }
-
         [HttpPost("students")]
         public IActionResult AddStudents(Student s)
         {
@@ -51,6 +39,37 @@ namespace StudentManagement.Controllers
                          select s;
             return result.ToList();
         }
+
+        [HttpGet("professors")]
+        public List<Professor> GetProfesors()
+        {
+            return management.professors.ToList();
+        }
+
+        [HttpPost("professors")]
+        public IActionResult AddProfessors(Professor s)
+        {
+            management.professors.Add(s);
+            management.SaveChanges();
+            return Ok();
+        }
+
+
+        [HttpGet("courses")]
+        public List<Course> GetCourses()
+        {
+            return data.Courses;
+        }
+
+        [HttpPost("courses")]
+        public IActionResult AddCourses(Course s)
+        {
+            management.courses.Add(s);
+            management.SaveChanges();
+            return Ok();
+        }
+
+
 
 
     }
